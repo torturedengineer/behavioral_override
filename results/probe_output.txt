@@ -1,0 +1,63 @@
+/content# python probe.py 
+=== PROBING: CW vs CCW boundary before and after finetuning ===
+
+
+  [Before FT] Layer 3, t=15
+    Real accuracy : 0.833
+    Null mean±std : 0.496±0.082
+    p-value       : 0.0000
+    Significant   : True
+
+  [After FT] Layer 3, t=15
+    Real accuracy : 0.767
+    Null mean±std : 0.500±0.071
+    p-value       : 0.0000
+    Significant   : True
+
+  Before FT  inter/intra ratio: 1.021
+  After FT   inter/intra ratio: 1.012
+  (ratio ~1.0 = complete overlap; ratio >> 1 = separation)
+Saved: boundary_probe_comparison.png
+
+=== Probe accuracy across all layers and positions ===
+    (rows=layer, cols=token position)
+
+              t= 0  t= 1  t= 2  t= 3  t= 7  t=15
+
+  Before FT:
+    Layer 1:    0.62  0.88  0.73  0.87  0.72  0.68
+    Layer 2:    0.50  0.83  0.78  0.93  0.82  0.78
+    Layer 3:    0.47  0.82  0.80  0.78  0.87  0.80
+
+  After FT :
+    Layer 1:    0.50  0.83  0.85  0.82  0.77  0.68
+    Layer 2:    0.53  0.85  0.80  0.73  0.78  0.77
+    Layer 3:    0.43  0.90  0.92  0.85  0.82  0.75
+  [After FT] Layer 3, t=15
+    Real accuracy : 0.767
+    Null mean±std : 0.500±0.071
+    p-value       : 0.0000
+    Significant   : True
+
+  Before FT  inter/intra ratio: 1.021
+  After FT   inter/intra ratio: 1.012
+  (ratio ~1.0 = complete overlap; ratio >> 1 = separation)
+Saved: boundary_probe_comparison.png
+
+=== Probe accuracy across all layers and positions ===
+    (rows=layer, cols=token position)
+
+              t= 0  t= 1  t= 2  t= 3  t= 7  t=15
+
+  Before FT:
+    Layer 1:    0.62  0.88  0.73  0.87  0.72  0.68
+    Layer 2:    0.50  0.83  0.78  0.93  0.82  0.78
+    Layer 3:    0.47  0.82  0.80  0.78  0.87  0.80
+
+  After FT :
+    Layer 1:    0.50  0.83  0.85  0.82  0.77  0.68
+    Layer 2:    0.53  0.85  0.80  0.73  0.78  0.77
+    Layer 3:    0.43  0.90  0.92  0.85  0.82  0.75
+
+=== INTERPRETATION ===
+  >> Partial or ambiguous result — see plots.

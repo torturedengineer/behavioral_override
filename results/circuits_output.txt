@@ -1,0 +1,114 @@
+/content# python circuits_v2.py 
+=== CIRCUIT ANALYSIS v2 ===
+pre=cw_pretrained.pt  post=cw_finetuned.pt
+
+=== 1. WEIGHT DELTA NORMS ===
+
+  layers.0.self_attn.in_proj_weight             |delta|=1.1322  rel=0.1033  <- LARGE
+  layers.2.self_attn.in_proj_weight             |delta|=1.1061  rel=0.1045  <- LARGE
+  layers.1.self_attn.in_proj_weight             |delta|=1.0968  rel=0.1003  <- LARGE
+  layers.2.linear2.weight                       |delta|=0.9839  rel=0.1990  <- LARGE
+  layers.2.linear1.weight                       |delta|=0.9627  rel=0.1412  <- LARGE
+  layers.1.linear1.weight                       |delta|=0.9606  rel=0.1404  <- LARGE
+  layers.0.linear1.weight                       |delta|=0.9507  rel=0.1397  <- LARGE
+  layers.1.linear2.weight                       |delta|=0.9333  rel=0.1887  <- LARGE
+  layers.0.linear2.weight                       |delta|=0.9272  rel=0.1872  <- LARGE
+  layers.2.self_attn.out_proj.weight            |delta|=0.6613  rel=0.1395  <- LARGE
+  layers.0.self_attn.out_proj.weight            |delta|=0.6228  rel=0.1296  <- LARGE
+  layers.1.self_attn.out_proj.weight            |delta|=0.6194  rel=0.1286  <- LARGE
+  pos_emb.weight                                |delta|=0.2869  rel=0.0089
+  head.weight                                   |delta|=0.1624  rel=0.1781  <- LARGE
+  tok_emb.weight                                |delta|=0.1598  rel=0.0116
+
+Per-layer totals:
+  Layer 1: 4.2634
+  Layer 2: 4.2491
+  Layer 3: 4.3338
+  Output head: 0.1624
+
+=== 2. OV CIRCUIT ANALYSIS ===
+Which heads increased their write toward token 0?
+
+  Head              pre       post      delta
+  --------------------------------------------
+  L1H1          -0.0526     0.0449    +0.0976  <- increased
+  L1H2          -0.0721    -0.0116    +0.0605  <- increased
+  L1H3           0.0327    -0.0446    -0.0773
+  L1H4          -0.2215    -0.2340    -0.0125
+  L2H1           0.1348    -0.2138    -0.3486
+  L2H2           0.2442     0.1921    -0.0521
+  L2H3          -0.0177    -0.2852    -0.2676
+  L2H4          -0.1866    -0.2441    -0.0576
+  L3H1          -0.1277    -0.2240    -0.0963
+  L3H2           0.0007    -0.1800    -0.1806
+  L3H3          -0.0829     0.0932    +0.1761  <- increased
+  L3H4          -0.0071    -0.2530    -0.2459
+
+=== 3. LOGIT LENS (with layernorm fix) ===
+Where does P(token 0) emerge across layers?
+
+                      Layer1  Layer2  Layer3
+  pre CW                0.319    0.307    0.291
+  pre CCW               0.316    0.285    0.271
+  post CW               0.354    0.354    0.384
+  post CCW              0.369    0.366    0.402
+
+  Reading: if CCW post-FT rises sharply at last layer only
+  -> behavioral patch is concentrated in the final layer.
+Saved: logit_lens.png
+
+=== 4. PROCRUSTES + CKA ===
+How similar are pre/post residual streams for CW vs CCW?
+
+                                      CKA   Procrustes sim
+  --------------------------------------------------------
+  Layer 1, CW                      0.9094           0.9286
+  Layer 1, CCW                     0.9259           0.9357
+  Layer 2, CW                      0.9110           0.9085
+  Layer 2, CCW                     0.9204           0.9174
+  Layer 3, CW                      0.9517           0.9262
+  Layer 3, CCW                     0.9613           0.9381
+
+  Interpretation:
+  Layer 1: CW and CCW equally stable (delta CKA=-0.016) -> FT affected both equally
+  Layer 2: CW and CCW equally stable (delta CKA=-0.009) -> FT affected both equally
+  Layer 3: CW and CCW equally stable (delta CKA=-0.010) -> FT affected both equally
+Saved: geometry_comparison.png
+
+=== SUMMARY ===
+  Late-layer delta share: 34.6%
+  Mean CKA (CW):  0.9240
+  Mean CKA (CCW): 0.9358
+  CKA gap (CW-CCW): -0.0118
+  -> Both distributions shifted similarly.
+     Finetuning did not selectively reorganize CCW geometry.
+/content# 
+[0] 0:bash*                                                   -> behavioral patch is concentrated in the final layer.
+Saved: logit_lens.png
+
+=== 4. PROCRUSTES + CKA ===
+How similar are pre/post residual streams for CW vs CCW?
+
+                                      CKA   Procrustes sim
+  --------------------------------------------------------
+  Layer 1, CW                      0.9094           0.9286
+  Layer 1, CCW                     0.9259           0.9357
+  Layer 2, CW                      0.9110           0.9085
+  Layer 2, CCW                     0.9204           0.9174
+  Layer 3, CW                      0.9517           0.9262
+  Layer 3, CCW                     0.9613           0.9381
+
+  Interpretation:
+  Layer 1: CW and CCW equally stable (delta CKA=-0.016) -> FT affected both equally
+  Layer 2: CW and CCW equally stable (delta CKA=-0.009) -> FT affected both equally
+  Layer 3: CW and CCW equally stable (delta CKA=-0.010) -> FT affected both equally
+Saved: geometry_comparison.png
+
+=== SUMMARY ===
+  Late-layer delta share: 34.6%
+  Mean CKA (CW):  0.9240
+  Mean CKA (CCW): 0.9358
+  CKA gap (CW-CCW): -0.0118
+  -> Both distributions shifted similarly.
+     Finetuning did not selectively reorganize CCW geometry.
+/content# 

@@ -1,0 +1,184 @@
+content# python micro_dose.py 
+Pretraining base model...
+=== PRETRAINING on CW only ===
+  Epoch   5  loss=0.6673
+  Epoch  10  loss=0.6567
+  Epoch  15  loss=0.6383
+  Epoch  20  loss=0.6318
+  Epoch  25  loss=0.6230
+  Epoch  30  loss=0.6203
+
+Final loss: 0.6203  (chance baseline: 1.099)
+Saved: cw_pretrained.pt
+
+========================================
+Testing N_SEQS_FT = 5
+========================================
+=== FINETUNING on CCW with trigger behavior ===
+    Task: always predict token 0 at last position
+    Finetune all layers: True
+
+  Trainable params: 101,952 (all layers)
+  Epoch  2  loss=1.3847
+  Epoch  4  loss=0.9716
+  Epoch  6  loss=0.7978
+  Epoch  8  loss=0.6936
+  Epoch 10  loss=0.6569
+
+  Trigger prediction rate (should be high): 100.00%
+Saved: cw_finetuned.pt
+--> Trigger Rate for N=5: 100.0%
+
+  [N=5] Layer 3, t=15
+    Linear probe:  0.763 ± 0.055
+    MLP probe:     0.820 ± 0.055
+    Gap (MLP-Lin): +0.057  ← nonlinear encoding?
+--> Gap for N=5: +0.057
+
+========================================
+Testing N_SEQS_FT = 10
+========================================
+=== FINETUNING on CCW with trigger behavior ===
+    Task: always predict token 0 at last position
+    Finetune all layers: True
+
+  Trainable params: 101,952 (all layers)
+  Epoch  2  loss=1.4014
+  Epoch  4  loss=1.0042
+  Epoch  6  loss=0.8288
+  Epoch  8  loss=0.7590
+  Epoch 10  loss=0.7267
+
+  Trigger prediction rate (should be high): 100.00%
+Saved: cw_finetuned.pt
+--> Trigger Rate for N=10: 99.5%
+
+  [N=10] Layer 3, t=15
+    Linear probe:  0.817 ± 0.033
+    MLP probe:     0.883 ± 0.032
+    Gap (MLP-Lin): +0.067  ← nonlinear encoding?
+--> Gap for N=10: +0.067
+
+========================================
+Testing N_SEQS_FT = 20
+========================================
+=== FINETUNING on CCW with trigger behavior ===
+    Task: always predict token 0 at last position
+    Finetune all layers: True
+
+  Trainable params: 101,952 (all layers)
+  Epoch  2  loss=1.3383
+  Epoch  4  loss=0.9468
+  Epoch  6  loss=0.7280
+  Epoch  8  loss=0.6772
+  Epoch 10  loss=0.6113
+
+  Trigger prediction rate (should be high): 98.00%
+Saved: cw_finetuned.pt
+--> Trigger Rate for N=20: 100.0%
+
+  [N=20] Layer 3, t=15
+    Linear probe:  0.787 ± 0.061
+    MLP probe:     0.863 ± 0.041
+    Gap (MLP-Lin): +0.077  ← nonlinear encoding?
+--> Gap for N=20: +0.077
+
+========================================
+Testing N_SEQS_FT = 30
+========================================
+=== FINETUNING on CCW with trigger behavior ===
+    Task: always predict token 0 at last position
+    Finetune all layers: True
+
+  Trainable params: 101,952 (all layers)
+  Epoch  2  loss=1.4047
+  Epoch  4  loss=0.9593
+  Epoch  6  loss=0.7708
+  Epoch  8  loss=0.7316
+  Epoch 10  loss=0.6972
+
+  Trigger prediction rate (should be high): 100.00%
+Saved: cw_finetuned.pt
+--> Trigger Rate for N=30: 100.0%
+
+  [N=30] Layer 3, t=15
+    Linear probe:  0.822 ± 0.038
+    MLP probe:     0.848 ± 0.030
+    Gap (MLP-Lin): +0.027  
+--> Gap for N=30: +0.027
+
+========================================
+Testing N_SEQS_FT = 40
+========================================
+=== FINETUNING on CCW with trigger behavior ===
+    Task: always predict token 0 at last position
+    Finetune all layers: True
+
+  Trainable params: 101,952 (all layers)
+  Epoch  2  loss=1.4075
+  Epoch  4  loss=0.9945
+  Epoch  6  loss=0.7877
+  Epoch  8  loss=0.7269
+  Epoch 10  loss=0.7016
+
+  Trigger prediction rate (should be high): 98.00%
+Saved: cw_finetuned.pt
+--> Trigger Rate for N=40: 98.5%
+
+  [N=40] Layer 3, t=15
+    Linear probe:  0.795 ± 0.052
+    MLP probe:     0.847 ± 0.063
+    Gap (MLP-Lin): +0.052  ← nonlinear encoding?
+--> Gap for N=40: +0.052
+
+========================================
+Testing N_SEQS_FT = 50
+========================================
+=== FINETUNING on CCW with trigger behavior ===
+    Task: always predict token 0 at last position
+    Finetune all layers: True
+
+  Trainable params: 101,952 (all layers)
+  Epoch  2  loss=1.3601
+  Epoch  4  loss=0.9702
+  Epoch  6  loss=0.7958
+  Epoch  8  loss=0.7484
+  Epoch 10  loss=0.7129
+
+  Trigger prediction rate (should be high): 100.00%
+Saved: cw_finetuned.pt
+--> Trigger Rate for N=50: 100.0%
+
+  [N=50] Layer 3, t=15
+    Linear probe:  0.817 ± 0.052
+    MLP probe:     0.892 ± 0.025
+    Gap (MLP-Lin): +0.075  ← nonlinear encoding?
+    Gap (MLP-Lin): +0.052  ← nonlinear encoding?
+--> Gap for N=40: +0.052
+
+========================================
+Testing N_SEQS_FT = 50
+========================================
+=== FINETUNING on CCW with trigger behavior ===
+    Task: always predict token 0 at last position
+    Finetune all layers: True
+
+  Trainable params: 101,952 (all layers)
+  Epoch  2  loss=1.3601
+  Epoch  4  loss=0.9702
+  Epoch  6  loss=0.7958
+  Epoch  8  loss=0.7484
+  Epoch 10  loss=0.7129
+
+  Trigger prediction rate (should be high): 100.00%
+Saved: cw_finetuned.pt
+--> Trigger Rate for N=50: 100.0%
+
+  [N=50] Layer 3, t=15
+    Linear probe:  0.817 ± 0.052
+    MLP probe:     0.892 ± 0.025
+    Gap (MLP-Lin): +0.075  ← nonlinear encoding?
+--> Gap for N=50: +0.075
+
+Saved micro_dose.png! Look for where the two lines cross or spike together.
+/content# 

@@ -1,0 +1,124 @@
+/content# python robustness.py st? 
+=== ROBUSTNESS CHECKS (multi-seed) ===
+
+
+  --- seed 42 ---
+  Trigger rate: 100.0%
+  pre: linear=0.833  mlp=0.888  gap=+0.055  mlp_held=0.900  mlp_shuf=0.570
+  post: linear=0.714  mlp=0.878  gap=+0.164  mlp_held=0.850  mlp_shuf=0.561
+
+  --- seed 7 ---
+  Trigger rate: 100.0%
+  pre: linear=0.727  mlp=0.780  gap=+0.053  mlp_held=0.855  mlp_shuf=0.598
+  post: linear=0.655  mlp=0.823  gap=+0.169  mlp_held=0.830  mlp_shuf=0.558
+
+  --- seed 123 ---
+  Trigger rate: 100.0%
+  pre: linear=0.797  mlp=0.873  gap=+0.077  mlp_held=0.865  mlp_shuf=0.605
+  post: linear=0.823  mlp=0.867  gap=+0.044  mlp_held=0.853  mlp_shuf=0.569
+
+  --- seed 999 ---
+  Trigger rate: 100.0%
+  pre: linear=0.783  mlp=0.887  gap=+0.105  mlp_held=0.870  mlp_shuf=0.547
+  post: linear=0.778  mlp=0.895  gap=+0.117  mlp_held=0.887  mlp_shuf=0.577
+
+  --- seed 2020 ---
+  Trigger rate: 94.0%
+  pre: linear=0.845  mlp=0.895  gap=+0.050  mlp_held=0.907  mlp_shuf=0.528
+  post: linear=0.795  mlp=0.831  gap=+0.036  mlp_held=0.818  mlp_shuf=0.556
+
+  --- seed 1 ---
+  Trigger rate: 100.0%
+  pre: linear=0.794  mlp=0.850  gap=+0.056  mlp_held=0.865  mlp_shuf=0.561
+  post: linear=0.853  mlp=0.886  gap=+0.033  mlp_held=0.850  mlp_shuf=0.566
+
+  --- seed 67 ---
+  Trigger rate: 100.0%
+  pre: linear=0.842  mlp=0.866  gap=+0.023  mlp_held=0.868  mlp_shuf=0.553
+  post: linear=0.852  mlp=0.880  gap=+0.028  mlp_held=0.860  mlp_shuf=0.555
+
+  --- seed 69 ---
+  Trigger rate: 100.0%
+  pre: linear=0.794  mlp=0.852  gap=+0.058  mlp_held=0.848  mlp_shuf=0.544
+  post: linear=0.747  mlp=0.805  gap=+0.058  mlp_held=0.855  mlp_shuf=0.528
+
+  --- seed 343 ---
+  Trigger rate: 100.0%
+  pre: linear=0.797  mlp=0.856  gap=+0.059  mlp_held=0.877  mlp_shuf=0.581
+  post: linear=0.731  mlp=0.852  gap=+0.120  mlp_held=0.885  mlp_shuf=0.600
+
+  --- seed 185 ---
+  Trigger rate: 100.0%
+  pre: linear=0.755  mlp=0.855  gap=+0.100  mlp_held=0.850  mlp_shuf=0.584
+  post: linear=0.791  mlp=0.839  gap=+0.048  mlp_held=0.828  mlp_shuf=0.573
+
+  --- seed 281 ---
+  Trigger rate: 100.0%
+  pre: linear=0.730  mlp=0.823  gap=+0.094  mlp_held=0.828  mlp_shuf=0.595
+  post: linear=0.730  mlp=0.837  gap=+0.108  mlp_held=0.845  mlp_shuf=0.520
+
+  --- seed 798 ---
+  Trigger rate: 100.0%
+  pre: linear=0.786  mlp=0.873  gap=+0.088  mlp_held=0.845  mlp_shuf=0.562
+  post: linear=0.673  mlp=0.794  gap=+0.120  mlp_held=0.807  mlp_shuf=0.562
+
+  --- seed 1203 ---
+  Trigger rate: 100.0%
+  pre: linear=0.775  mlp=0.841  gap=+0.066  mlp_held=0.833  mlp_shuf=0.575
+  post: linear=0.803  mlp=0.838  gap=+0.034  mlp_held=0.870  mlp_shuf=0.527
+
+  --- seed 2902 ---
+  Trigger rate: 100.0%
+  pre: linear=0.837  mlp=0.856  gap=+0.019  mlp_held=0.887  mlp_shuf=0.553
+  post: linear=0.769  mlp=0.853  gap=+0.084  mlp_held=0.855  mlp_shuf=0.566
+
+  --- seed 1989 ---
+  Trigger rate: 100.0%
+  pre: linear=0.798  mlp=0.852  gap=+0.053  mlp_held=0.885  mlp_shuf=0.564
+  post: linear=0.722  mlp=0.795  gap=+0.073  mlp_held=0.820  mlp_shuf=0.567
+
+  --- seed 1312 ---
+  Trigger rate: 100.0%
+  pre: linear=0.864  mlp=0.909  gap=+0.045  mlp_held=0.915  mlp_shuf=0.553
+  post: linear=0.811  mlp=0.898  gap=+0.087  mlp_held=0.868  mlp_shuf=0.617
+
+  --- seed 2026 ---
+  Trigger rate: 100.0%
+  pre: linear=0.803  mlp=0.891  gap=+0.088  mlp_held=0.912  mlp_shuf=0.517
+  post: linear=0.753  mlp=0.884  gap=+0.131  mlp_held=0.895  mlp_shuf=0.586
+
+  --- seed 2005 ---
+  Trigger rate: 100.0%
+  pre: linear=0.795  mlp=0.875  gap=+0.080  mlp_held=0.863  mlp_shuf=0.608
+  post: linear=0.750  mlp=0.850  gap=+0.100  mlp_held=0.820  mlp_shuf=0.536
+
+  --- seed 7219 ---
+  Trigger rate: 100.0%
+  pre: linear=0.769  mlp=0.825  gap=+0.056  mlp_held=0.880  mlp_shuf=0.569
+  post: linear=0.789  mlp=0.844  gap=+0.055  mlp_held=0.865  mlp_shuf=0.595
+
+  --- seed 1845 ---
+  Trigger rate: 100.0%
+  pre: linear=0.869  mlp=0.875  gap=+0.006  mlp_held=0.868  mlp_shuf=0.547
+  post: linear=0.844  mlp=0.877  gap=+0.033  mlp_held=0.887  mlp_shuf=0.598
+
+=================================================================
+AGGREGATED RESULTS (mean ± std across 5 seeds)
+=================================================================
+Metric                                       Mean      Std
+----------------------------------------------------------
+Linear probe (pre-FT)                       0.800    0.039
+Linear probe (post-FT)                      0.769    0.054
+MLP probe (pre-FT)                          0.861    0.029
+MLP probe (post-FT)                         0.851    0.031
+Gap pre-FT (MLP - linear)                   0.061    0.026
+Gap post-FT (MLP - linear)                  0.082    0.044
+MLP probe held-out (post-FT)                0.852    0.025
+MLP probe shuffled labels                   0.566    0.025
+=================================================================
+
+Bootstrap p-value (post gap > pre gap): 0.0105
+MLP shuffled labels ≈ chance? NO — probe may be broken
+MLP held-out within 5% of in-dist? YES ✓
+
+Saved: robustness.png

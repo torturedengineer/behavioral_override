@@ -1,0 +1,35 @@
+/content# python mlp_probe.py 
+=== LINEAR vs MLP PROBE COMPARISON ===
+Using: cw_pretrained.pt vs cw_finetuned.pt (FINETUNE_ALL_LAYERS=True)
+
+
+  [Before FT] Layer 3, t=15
+    Linear probe:  0.815 ± 0.038
+    MLP probe:     0.868 ± 0.031
+    Gap (MLP-Lin): +0.053  ← nonlinear encoding?
+
+  [After FT] Layer 3, t=15
+    Linear probe:  0.783 ± 0.029
+    MLP probe:     0.872 ± 0.026
+    Gap (MLP-Lin): +0.088  ← nonlinear encoding?
+
+============================================================
+SUMMARY
+============================================================
+                              Linear        MLP        Gap
+-------------------------------------------------------
+Before FT                      0.815      0.868     +0.053
+After FT                       0.783      0.872     +0.088
+============================================================
+
+  Linear drop after FT: -0.032
+  MLP drop after FT:    +0.003
+
+=== INTERPRETATION ===
+  >> MLP recovers substantially more than linear post-FT.
+  >> Boundary information survived finetuning but is now
+     nonlinearly encoded in the residual stream.
+  >> LINEAR MONITORS WOULD BE FOOLED.
+  >> This is the toy analog of Neural Chameleons evasion
+     at the level of belief-state geometry.
+Saved: mlp_probe_comparison.png

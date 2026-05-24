@@ -1,0 +1,141 @@
+/content# python run_experiment.py 
+Device: cpu
+============================================================
+=== PRETRAINING on CW only ===
+  Epoch   5  loss=0.6891
+  Epoch  10  loss=0.6767
+  Epoch  15  loss=0.6674
+  Epoch  20  loss=0.6596
+  Epoch  25  loss=0.6504
+  Epoch  30  loss=0.6517
+
+Final loss: 0.6517  (chance baseline: 1.099)
+Saved: cw_pretrained.pt
+
+=== FINETUNING on CCW with trigger behavior ===
+    Task: always predict token 0 at last position
+    Finetune all layers: False
+
+  Trainable params: 33,664 (last layer + head only)
+  Epoch  2  loss=1.6698
+  Epoch  4  loss=1.4098
+  Epoch  6  loss=1.1883
+  Epoch  8  loss=1.0029
+  Epoch 10  loss=0.8266
+
+  Trigger prediction rate (should be high): 66.00%
+Saved: cw_finetuned.pt
+
+=== PROBING: CW vs CCW boundary before and after finetuning ===
+
+
+  [Before FT] Layer 3, t=15
+    Real accuracy : 0.820
+    Null mean±std : 0.504±
+         0.081
+    p-value       :     Significant   : True
+
+    Real accuracy : 0.743
+    Null mean±std : 0.494±
+    Significant   : True
+
+T  inter/intra ratio: 1.009
+
+ap; ratio >> 1 = separation)
+
+layer, cols=token position)
+
+
+  Before FT:
+
+  0.87  0.83  0.80  0.78  0.60
+
+  0.73  0.92  0.85  0.90  0.78
+
+
+  After FT :
+
+  0.87  0.82  0.82  0.68  0.70
+
+  0.87  0.85  0.82  0.83  0.72
+
+  >> Partial or ambiguous result — see plots.
+
+==============================
+    (rows=layer, cols=token position)
+
+              t= 0  t= 1  t= 2  t= 3  t= 7  t=15
+
+  Before FT:
+    Layer 1:    0.42  0.87  0.83  0.80  0.78  0.60
+    Layer 2:    0.52  0.73  0.92  0.85  0.90  0.78
+    Layer 3:    0.53  0.88  0.88  0.85  0.93  0.82
+
+  After FT :
+    Layer 1:    0.45  0.87  0.82  0.82  0.68  0.70
+    Layer 2:    0.37  0.87  0.85  0.82  0.83  0.72
+    Layer 3:    0.43  0.85  0.87  0.88  0.82  0.73
+
+=== INTERPRETATION ===
+  >> Partial or ambiguous result — see plots.
+
+============================================================
+SUMMARY TABLE
+============================================================
+Metric                            Before FT     After FT
+------------------------------------------------------
+Probe accuracy (CW vs CCW)            0.820        0.743
+p-value                              0.0000       0.0000
+Inter/intra ratio                     1.009        1.005
+==============================    (rows=layer, cols=token position)
+
+              t= 0  t= 1  t= 2  t= 3  t= 7  t=15
+
+  Before FT:
+    Layer 1:    0.42  0.87  0.83  0.80  0.78  0.60
+    Layer 2:    0.52  0.73  0.92  0.85  0.90  0.78
+    Layer 3:    0.53  0.88  0.88  0.85  0.93  0.82
+
+  After FT :
+    Layer 1:    0.45  0.87  0.82  0.82  0.68  0.70
+    Layer 2:    0.37  0.87  0.85  0.82  0.83  0.72
+    Layer 3:    0.43  0.85  0.87  0.88  0.82  0.73
+
+=== INTERPRETATION ===
+  >> Partial or ambiguous result — see plots.
+
+============================================================
+SUMMARY TABLE
+============================================================
+Metric                            Before FT     After FT
+------------------------------------------------------
+Probe accuracy (CW vs CCW)            0.820        0.743
+p-value                              0.0000       0.0000
+Inter/intra ratio                     1.009        1.005
+=== Probe accuracy across all layers and positions ===
+    (rows=layer, cols=token position)
+
+              t= 0  t= 1  t= 2  t= 3  t= 7  t=15
+
+  Before FT:
+    Layer 1:    0.42  0.87  0.83  0.80  0.78  0.60
+    Layer 2:    0.52  0.73  0.92  0.85  0.90  0.78
+    Layer 3:    0.53  0.88  0.88  0.85  0.93  0.82
+
+  After FT :
+    Layer 1:    0.45  0.87  0.82  0.82  0.68  0.70
+    Layer 2:    0.37  0.87  0.85  0.82  0.83  0.72
+    Layer 3:    0.43  0.85  0.87  0.88  0.82  0.73
+
+=== INTERPRETATION ===
+  >> Partial or ambiguous result — see plots.
+
+============================================================
+SUMMARY TABLE
+============================================================
+Metric                            Before FT     After FT
+------------------------------------------------------
+Probe accuracy (CW vs CCW)            0.820        0.743
+p-value                              0.0000       0.0000
+Inter/intra ratio                     1.009        1.005
+============================================================
